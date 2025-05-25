@@ -1,3 +1,4 @@
+_G.GAME_TITTLE = "Slither"
 _G.TILE_SIZE = 16
 _G.ROWS = 32
 _G.COLS = 32

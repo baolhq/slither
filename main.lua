@@ -77,6 +77,10 @@ local function loadHighScore()
 end
 
 function love.load()
+    local icon = love.image.newImageData("res/img/icon.png")
+    love.window.setTitle(GAME_TITTLE)
+    love.window.setIcon(icon)
+
     highScore = loadHighScore()
     wall:generate(COLS, ROWS)
     apple:init()

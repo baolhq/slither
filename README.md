@@ -70,15 +70,6 @@ To build and run the project:
 
 ![Slither screenshot](https://images2.imgbox.com/5f/b0/CtpYQgDw_o.png)
 
-## Version History
-
-- 1.0.0
-  - Initial release with basic snake
-  - Smooth queue-based input system
-  - Added pause, resume and restart mechanic
-  - Added font, music and some SFX
-  - Added some juicy particles, screenshake
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
