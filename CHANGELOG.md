@@ -3,6 +3,7 @@
 ## 1.0.2
 
 - Added basic scene manager
+- Added basic mouse input and buttons
 - Refactoring `main.lua` for readability
 
 ## 1.0.1

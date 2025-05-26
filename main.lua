@@ -45,6 +45,10 @@ function love.keypressed(key)
     end
 end
 
+function love.mousepressed(x, y, btn)
+    sceneManager:mousepressed(x, y, btn)
+end
+
 function love.update(dt)
     sceneManager:update(dt)
 end

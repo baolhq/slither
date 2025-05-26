@@ -11,7 +11,17 @@ function sceneManager:switch(sceneName, assets)
     if scenes[sceneName] then
         self.current = sceneName
         if scenes[self.current].load then
-            scenes[self.current]:load(assets)
+            -- Callback actions from child scene
+            local actions = {
+                switchScene = function(newScene)
+                    self:switch(newScene, assets)
+                end,
+                quit = function()
+                    love.event.quit()
+                end
+            }
+
+            scenes[self.current]:load(assets, actions)
         end
     else
         error("Scene " .. sceneName .. " not found.")
@@ -22,6 +32,13 @@ function sceneManager:keypressed(key)
     local scene = scenes[self.current]
     if scene.keypressed then
         scene:keypressed(key)
+    end
+end
+
+function sceneManager:mousepressed(x, y, btn)
+    local scene = scenes[self.current]
+    if scene.mousepressed then
+        scene:mousepressed(x, y, btn)
     end
 end
 
