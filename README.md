@@ -1,6 +1,6 @@
 # Slither
 
-Yet another Snake clone with Love2D, nothing fancy here..
+Yet another Snake clone with Love2D while I'm learning the framework, nothing fancy here..
 
 ## Player Manual
 
@@ -51,18 +51,22 @@ To build and run the project:
 ## Project Structure
 
 ```sh
-/<slither>
+/slither
 ├── main.lua                # Entry point
 ├── conf.lua                # Startup configurations
-├── build_config.toml       # Configurations for cross-platform building
-├── /lib                    # Common libraries
+├── build_config.toml       # Setup for cross-platforms building
+├── /lib                    # Third-party libraries
 ├── /src                    # Game source code
 │   ├── entities/           # Game entities
 │   ├── global/             # Global variables
+│   ├── managers/           # Manage scenes, inputs, game states etc..
+│   ├── scenes/             # Game scenes
 │   └── util/               # Helper functions
 ├── /res                    # Static resources
+│   ├── img/                # Sprites, textures etc..
 │   ├── audio/              # Sound effects
 │   └── font/               # Recommended fonts
+├── /.vscode                # VSCode launch, debug and build setup
 └── /bin                    # Build output
 ```
 
@@ -72,4 +76,4 @@ To build and run the project:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the [MIT License](LICENSE.md). Feel free to customize it whatever you want.
