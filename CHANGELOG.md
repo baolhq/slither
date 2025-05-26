@@ -12,3 +12,8 @@
 
 - Fix game title
 - Update game icon
+
+## 1.0.2
+
+- Added basic scene manager
+- Refactoring `main.lua` for readability
