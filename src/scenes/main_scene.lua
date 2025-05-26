@@ -163,8 +163,8 @@ function mainScene:draw()
 
     -- Draw paused
     if self.gameState == "paused" then
-        drawer:drawCenteredText("GAME PAUSED", self.mainFont, -14)
-        drawer:drawCenteredText("PRESS <SPACE> TO RESUME", self.subFont, 14)
+        drawer:drawCenteredText("GAME PAUSED", self.assets.mainFont, -14)
+        drawer:drawCenteredText("PRESS <SPACE> TO RESUME", self.assets.subFont, 14)
     end
 
     -- Draw game over
@@ -172,10 +172,10 @@ function mainScene:draw()
         local scoreText = "YOUR SCORE: " .. string.format("%04d", self.score)
         local highScoreText = "HIGH SCORE: " .. string.format("%04d", self.highScore)
 
-        drawer:drawCenteredText("GAME OVER", self.mainFont, -28)
+        drawer:drawCenteredText("GAME OVER", self.assets.mainFont, -28)
         drawer:drawCenteredText(scoreText, self.assets.subFont, 0)
         drawer:drawCenteredText(highScoreText, self.assets.subFont, 20)
-        drawer:drawCenteredText("PRESS <ENTER> TO RESTART", self.subFont, 48)
+        drawer:drawCenteredText("PRESS <ENTER> TO RESTART", self.assets.subFont, 48)
     end
 end
 

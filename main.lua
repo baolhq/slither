@@ -25,6 +25,10 @@ end
 local assets = {}
 
 function love.load()
+    love.window.setTitle(GAME_TITTLE)
+    local gameIcon = love.image.newImageData("res/img/icon.png")
+    love.window.setIcon(gameIcon)
+
     assets.mainFont = love.graphics.newFont("res/font/Valorant.ttf", FONT_MAIN_SIZE)
     assets.subFont = love.graphics.newFont("res/font/Valorant.ttf", FONT_SUB_SIZE)
     assets.bgSound = love.audio.newSource("res/audio/background.ogg", "stream")
@@ -38,8 +42,6 @@ end
 function love.keypressed(key)
     if key == "return" and sceneManager.current == "title" then
         sceneManager:switch("main", assets)
-    elseif key == "return" and sceneManager.current == "main" then
-        sceneManager:switch("leaderboard", assets)
     else
         sceneManager:keypressed(key)
     end
