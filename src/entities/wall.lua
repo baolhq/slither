@@ -3,7 +3,7 @@ local colors = require("src/global/colors")
 local const = require("src/global/const")
 
 local wall = {
-    tiles = {}
+    tiles = {},
 }
 
 function wall:generate(cols, rows)

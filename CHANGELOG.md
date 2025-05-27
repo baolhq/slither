@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.4
+
+- Added leaderboard scene
+- Update `file.saveScores()` and `file.loadScores()` to allows maximum of five highscores to be saved
+- Update button style because I feel like it
+- Change `Esc` button logic to goes back instead of just quit
+- Added trailing commas for sane Git diff
+- Many minor bug fixes
+
 ## 1.0.3
 
 - Implemented shared assets

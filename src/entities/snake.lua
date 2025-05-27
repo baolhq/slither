@@ -15,7 +15,7 @@ local snake = {
     explosion = {},
     explosionTimer = 0,
     exploding = false,
-    hasExploded = false
+    hasExploded = false,
 }
 
 local function initParticle()

@@ -9,15 +9,17 @@ local drawer = require("src/utils/drawer")
 local vector = require("lib/hump/vector")
 
 local mainScene = {
+    assets = {},
+    actions = {},
     moveTicks = 0,
     moveTickMax = 2,
     score = 0,
-    highScore = 0,
+    highScores = {},
     shakeTime = 0,
     shakeDuration = 0.3,
     shakeMagnitude = 5,
     gameState = "playing",
-    assets = {}
+    scoreSaved = false,
 }
 
 function mainScene:reset()
@@ -30,9 +32,10 @@ function mainScene:reset()
     self.gameState = "playing"
 end
 
-function mainScene:load(assets)
-    self.highScore = file.loadScore()
+function mainScene:load(assets, actions)
     self.assets = assets
+    self.actions = actions
+    self.highScores = file.loadScore()
     wall:generate(const.GRID_COLS, const.GRID_ROWS)
     apple:init()
 
@@ -42,6 +45,8 @@ end
 function mainScene:keypressed(key)
     if key == "space" and self.gameState == "paused" then
         self.gameState = "playing"
+    elseif key == "escape" then
+        self.actions.switchScene("title")
     elseif key == "space" then
         self.gameState = "paused"
     end
@@ -99,9 +104,18 @@ function mainScene:update(dt)
             self.shakeTime = self.shakeDuration
         end
 
-        if self.score > self.highScore then
-            self.highScore = self.score
-            file.saveScore(self.score)
+        -- Saving high score and push lower scores below
+        if not self.scoreSaved then
+            table.insert(self.highScores, self.score)
+            table.sort(self.highScores, function(a, b)
+                return a > b
+            end)
+
+            while #self.highScores > 5 do
+                table.remove(self.highScores)
+            end
+            file.saveScore(self.highScores)
+            self.scoreSaved = true
         end
 
         snake:update(dt)
@@ -180,7 +194,7 @@ function mainScene:draw()
     -- Draw game over
     if self.gameState == "gameOver" then
         local scoreText = "YOUR SCORE: " .. string.format("%04d", self.score)
-        local highScoreText = "HIGH SCORE: " .. string.format("%04d", self.highScore)
+        local highScoreText = "HIGH SCORE: " .. string.format("%04d", self.highScores[1])
 
         drawer:drawCenteredText("GAME OVER", self.assets.mainFont, -28)
         drawer:drawCenteredText(scoreText, self.assets.subFont, 0)

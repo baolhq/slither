@@ -1,6 +1,6 @@
 local sceneManager = require("src/managers/scene_manager")
+local const = require("src/global/const")
 local lick = require("lib/lick")
-local const= require("src/global/const")
 lick.reset = true -- Enable hot reload
 
 --#region Debugger setup
@@ -43,8 +43,6 @@ end
 function love.keypressed(key)
     if key == "return" and sceneManager.current == "title" then
         sceneManager:switch("main", assets)
-    elseif key == "escape" then
-        love.event.quit()
     else
         sceneManager:keypressed(key)
     end

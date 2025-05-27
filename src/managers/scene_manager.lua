@@ -4,7 +4,8 @@ local sceneManager = {
 
 local scenes = {
     title = require("src/scenes/title_scene"),
-    main = require("src/scenes/main_scene")
+    main = require("src/scenes/main_scene"),
+    leaderboard = require("src/scenes/lboard_scene")
 }
 
 function sceneManager:switch(sceneName, assets)

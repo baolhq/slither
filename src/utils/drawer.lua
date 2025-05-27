@@ -23,7 +23,7 @@ function drawer:drawButton(button, font)
     end
 
     -- Button rectangle
-    love.graphics.rectangle("fill", button.x, button.y, button.width, button.height, 10, 10)
+    love.graphics.rectangle("fill", button.x, button.y, button.width, button.height, 4, 4)
 
     -- Button text
     love.graphics.setColor(1, 1, 1)

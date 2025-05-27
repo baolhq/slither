@@ -6,8 +6,9 @@ Yet another Snake clone with Love2D while I'm learning the framework, nothing fa
 
 1. Move your snake with <code>arrow keys</code>
 2. Move faster while holding <code>arrow key</code>
-3. Pause and resume with <code>Space</code>
-4. Restart the game with <code>Enter</code>
+3. Go back or exit with <code>Esc</code>
+4. Pause and resume with <code>Space</code>
+5. Restart the game with <code>Enter</code>
 
 ## Building
 

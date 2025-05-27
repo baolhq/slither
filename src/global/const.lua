@@ -4,7 +4,8 @@ local const = {
     GRID_ROWS = 32,
     GRID_COLS = 32,
     FONT_MAIN_SIZE = 32,
-    FONT_SUB_SIZE = 14
+    FONT_SUB_SIZE = 14,
+    SAVE_PATH = "highscore.txt",
 }
 
 return const

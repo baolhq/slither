@@ -6,7 +6,7 @@ local apple = {
     position = {},
     particle = {},
     activateParticles = false,
-    particleTimer = 0
+    particleTimer = 0,
 }
 
 function apple:spawn(snakeBody)
