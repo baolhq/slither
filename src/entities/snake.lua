@@ -1,5 +1,7 @@
 local vector = require("lib/hump/vector")
 local array = require("src/utils/array")
+local const = require("src/global/const")
+local colors = require("src/global/colors")
 
 local snake = {
     body = {},
@@ -82,7 +84,10 @@ function snake:update(dt)
         self.explosionTimer = self.explosionTimer + dt
         for _, e in ipairs(self.explosions) do
             if not e.triggered and self.explosionTimer >= e.time then
-                e.ps:setPosition(e.pos.x * TILE_SIZE + TILE_SIZE / 2, e.pos.y * TILE_SIZE + TILE_SIZE / 2)
+                e.ps:setPosition(
+                    e.pos.x * const.TILE_SIZE + const.TILE_SIZE / 2,
+                    e.pos.y * const.TILE_SIZE + const.TILE_SIZE / 2
+                )
                 e.ps:emit(10)
                 e.triggered = true
             end
@@ -109,14 +114,25 @@ function snake:handleApple(applePos)
 end
 
 function snake:draw()
-    love.graphics.setColor(SNAKE_COLOR)
+    love.graphics.setColor(colors.SNAKE)
     for i = 2, #self.body do
         local p = self.body[i]
-        love.graphics.rectangle("fill", p.x * TILE_SIZE, p.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+        love.graphics.rectangle(
+            "fill",
+            p.x * const.TILE_SIZE,
+            p.y * const.TILE_SIZE,
+            const.TILE_SIZE, const.TILE_SIZE
+        )
     end
     local head = self.body[1]
-    love.graphics.setColor(SNAKE_HEAD_COLOR)
-    love.graphics.rectangle("fill", head.x * TILE_SIZE, head.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+    love.graphics.setColor(colors.SNAKE_HEAD)
+    love.graphics.rectangle(
+        "fill",
+        head.x * const.TILE_SIZE,
+        head.y * const.TILE_SIZE,
+        const.TILE_SIZE,
+        const.TILE_SIZE
+    )
 
     if self.exploding then
         love.graphics.setColor(1, 1, 1, 1)

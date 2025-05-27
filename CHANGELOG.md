@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+- Implemented shared assets
+- Fix missing exit event on title screen
+- Refactoring global constants
+
 ## 1.0.2
 
 - Added basic scene manager

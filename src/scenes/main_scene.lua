@@ -3,6 +3,8 @@ local snake = require("src/entities/snake")
 local wall = require("src/entities/wall")
 local apple = require("src/entities/apple")
 
+local const = require("src/global/const")
+local colors = require("src/global/colors")
 local drawer = require("src/utils/drawer")
 local vector = require("lib/hump/vector")
 
@@ -31,15 +33,13 @@ end
 function mainScene:load(assets)
     self.highScore = file.loadScore()
     self.assets = assets
-    wall:generate(COLS, ROWS)
+    wall:generate(const.GRID_COLS, const.GRID_ROWS)
     apple:init()
 
     self:reset()
 end
 
 function mainScene:keypressed(key)
-    if key == "escape" then love.event.quit() end
-
     if key == "space" and self.gameState == "paused" then
         self.gameState = "playing"
     elseif key == "space" then
@@ -136,7 +136,7 @@ function mainScene:update(dt)
 end
 
 function mainScene:draw()
-    love.graphics.clear(BG_COLOR)
+    love.graphics.clear(colors.BG)
 
     -- Apply screenshake
     local offsetX, offsetY = 0, 0
@@ -144,14 +144,22 @@ function mainScene:draw()
         offsetX = love.math.random(-self.shakeMagnitude, self.shakeMagnitude)
         offsetY = love.math.random(-self.shakeMagnitude, self.shakeMagnitude)
     end
+
+    -- Save current screen state into the stack
     love.graphics.push()
     love.graphics.translate(offsetX, offsetY)
 
     -- Draw map
-    love.graphics.setColor(TILE_COLOR)
-    for i = 0, COLS do
-        for j = 0, ROWS do
-            love.graphics.rectangle("line", i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+    love.graphics.setColor(colors.TILE)
+    for i = 0, const.GRID_COLS do
+        for j = 0, const.GRID_ROWS do
+            love.graphics.rectangle(
+                "line",
+                i * const.TILE_SIZE,
+                j * const.TILE_SIZE,
+                const.TILE_SIZE,
+                const.TILE_SIZE
+            )
         end
     end
 
@@ -159,7 +167,9 @@ function mainScene:draw()
     snake:draw()
     apple:draw()
 
+    -- Load previous screen state
     love.graphics.pop()
+    -- We don't shake UI elements below
 
     -- Draw paused
     if self.gameState == "paused" then

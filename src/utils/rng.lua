@@ -1,12 +1,13 @@
 local vector = require("lib/hump/vector")
 local array = require("src/utils/array")
+local const = require("src/global/const")
 local rng = {}
 
 function rng.getFreePos(snakeBody)
     local freePos = {}
 
-    for i = 1, ROWS - 2, 1 do
-        for j = 1, COLS - 2, 1 do
+    for i = 1, const.GRID_ROWS - 2, 1 do
+        for j = 1, const.GRID_COLS - 2, 1 do
             local pos = vector(i, j)
             if not array.contains(snakeBody, pos) then
                 table.insert(freePos, pos)

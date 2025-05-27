@@ -1,4 +1,7 @@
 local vector = require("lib/hump/vector")
+local colors = require("src/global/colors")
+local const = require("src/global/const")
+
 local wall = {
     tiles = {}
 }
@@ -18,9 +21,15 @@ function wall:generate(cols, rows)
 end
 
 function wall:draw()
-    love.graphics.setColor(WALL_COLOR)
+    love.graphics.setColor(colors.WALL)
     for _, v in ipairs(self.tiles) do
-        love.graphics.rectangle("fill", v.x * TILE_SIZE, v.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+        love.graphics.rectangle(
+            "fill",
+            v.x * const.TILE_SIZE,
+            v.y * const.TILE_SIZE,
+            const.TILE_SIZE,
+            const.TILE_SIZE
+        )
     end
 end
 

@@ -1,4 +1,5 @@
 local drawer = require("src/utils/drawer")
+local colors = require("src/global/colors")
 
 local titleScene = {
     assets = {},
@@ -32,14 +33,13 @@ function titleScene:update(dt)
 end
 
 function titleScene:draw()
-    love.graphics.clear(BG_COLOR)
+    love.graphics.clear(colors)
 
     drawer:drawCenteredText("SLITHER", self.assets.mainFont, -28)
-    drawer:drawCenteredText("PRESS <ENTER> TO RESTART", self.assets.subFont, 0)
 
     -- Draw centered button
     startBtn.x = (love.graphics.getWidth() - startBtn.width) / 2
-    startBtn.y = (love.graphics.getHeight() - startBtn.height) / 2 + 64
+    startBtn.y = (love.graphics.getHeight() - startBtn.height) / 2 + 28
     drawer:drawButton(startBtn, self.assets.subFont)
 end
 

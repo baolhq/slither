@@ -1,4 +1,7 @@
 local rng = require("src/utils/rng")
+local const = require("src/global/const")
+local colors = require("src/global/colors")
+
 local apple = {
     position = {},
     particle = {},
@@ -21,8 +24,14 @@ function apple:update(dt)
 end
 
 function apple:draw()
-    love.graphics.setColor(APPLE_COLOR)
-    love.graphics.rectangle("fill", self.position.x * TILE_SIZE, self.position.y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+    love.graphics.setColor(colors.APPLE)
+    love.graphics.rectangle(
+        "fill",
+        self.position.x * const.TILE_SIZE,
+        self.position.y * const.TILE_SIZE,
+        const.TILE_SIZE,
+        const.TILE_SIZE
+    )
 
     if self.activateParticles then
         love.graphics.setColor(1, 1, 1, 1)
@@ -52,8 +61,8 @@ end
 
 function apple:explode()
     self.particle:setPosition(
-        self.position.x * TILE_SIZE + TILE_SIZE / 2,
-        self.position.y * TILE_SIZE + TILE_SIZE / 2
+        self.position.x * const.TILE_SIZE + const.TILE_SIZE / 2,
+        self.position.y * const.TILE_SIZE + const.TILE_SIZE / 2
     )
     self.particle:emit(10)
     self.activateParticles = true

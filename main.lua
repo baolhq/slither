@@ -1,5 +1,6 @@
 local sceneManager = require("src/managers/scene_manager")
 local lick = require("lib/lick")
+local const= require("src/global/const")
 lick.reset = true -- Enable hot reload
 
 --#region Debugger setup
@@ -25,12 +26,12 @@ end
 local assets = {}
 
 function love.load()
-    love.window.setTitle(GAME_TITTLE)
+    love.window.setTitle(const.GAME_TITTLE)
     local gameIcon = love.image.newImageData("res/img/icon.png")
     love.window.setIcon(gameIcon)
 
-    assets.mainFont = love.graphics.newFont("res/font/Valorant.ttf", FONT_MAIN_SIZE)
-    assets.subFont = love.graphics.newFont("res/font/Valorant.ttf", FONT_SUB_SIZE)
+    assets.mainFont = love.graphics.newFont("res/font/Valorant.ttf", const.FONT_MAIN_SIZE)
+    assets.subFont = love.graphics.newFont("res/font/Valorant.ttf", const.FONT_SUB_SIZE)
     assets.bgSound = love.audio.newSource("res/audio/background.ogg", "stream")
     assets.blipSound = love.audio.newSource("res/audio/blip.wav", "static")
     assets.bgSound:setLooping(true)
@@ -42,6 +43,8 @@ end
 function love.keypressed(key)
     if key == "return" and sceneManager.current == "title" then
         sceneManager:switch("main", assets)
+    elseif key == "escape" then
+        love.event.quit()
     else
         sceneManager:keypressed(key)
     end
