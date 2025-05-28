@@ -31,7 +31,10 @@ function love.load()
     love.window.setIcon(gameIcon)
 
     assets.mainFont = love.graphics.newFont("res/font/Valorant.ttf", const.FONT_MAIN_SIZE)
+    assets.mainFont:setFilter("nearest", "nearest")
     assets.subFont = love.graphics.newFont("res/font/Valorant.ttf", const.FONT_SUB_SIZE)
+    assets.subFont:setFilter("nearest", "nearest")
+
     assets.bgSound = love.audio.newSource("res/audio/background.ogg", "stream")
     assets.blipSound = love.audio.newSource("res/audio/blip.wav", "static")
     assets.bgSound:setLooping(true)

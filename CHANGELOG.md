@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5
+
+- Added UI focus logic
+- Fix blurry fonts
+
 ## 1.0.4
 
 - Added leaderboard scene
