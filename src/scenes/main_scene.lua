@@ -1,12 +1,11 @@
+local vector = require("lib/hump/vector")
 local file = require("src/utils/file")
 local snake = require("src/entities/snake")
 local wall = require("src/entities/wall")
 local apple = require("src/entities/apple")
-
 local const = require("src/global/const")
 local colors = require("src/global/colors")
 local drawer = require("src/utils/drawer")
-local vector = require("lib/hump/vector")
 
 local mainScene = {
     assets = {},

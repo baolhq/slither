@@ -15,6 +15,7 @@ local backBtn = {
     width = 200,
     height = 40,
     text = "BACK",
+    focused = true,
     hovered = false,
 }
 
@@ -28,7 +29,7 @@ function lboard_scene:load(assets, actions)
 end
 
 function lboard_scene:keypressed(key)
-    if key == "escape" then
+    if key == "escape" or key == "return" then
         self.actions.switchScene("title")
     end
 end

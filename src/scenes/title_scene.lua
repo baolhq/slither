@@ -11,6 +11,7 @@ local startBtn = {
     width = 200,
     height = 40,
     text = "START",
+    focused = true,
     hovered = false,
 }
 
@@ -20,6 +21,7 @@ local lboardBtn = {
     width = 200,
     height = 40,
     text = "LEADERBOARD",
+    focused = false,
     hovered = false,
 }
 
@@ -29,13 +31,31 @@ function titleScene:load(assets, actions)
 end
 
 function titleScene:keypressed(key)
-    self.actions.quit()
+    if key == "escape" then self.actions.quit() end
+
+    if key == "return" then
+        if startBtn.focused then
+            self.actions.switchScene("main")
+        elseif key == "return" and lboardBtn.focused then
+            self.actions.switchScene("leaderboard")
+        end
+        return
+    end
+
+    if key == "tab" or key == "up" or key == "down" then
+        startBtn.focused = not startBtn.focused
+        lboardBtn.focused = not lboardBtn.focused
+    end
 end
 
 function titleScene:mousepressed(x, y, btn)
     if btn == 1 and startBtn.hovered then
+        startBtn.focused = true
+        lboardBtn.focused = false
         self.actions.switchScene("main")
     elseif btn == 1 and lboardBtn.hovered then
+        startBtn.focused = false
+        lboardBtn.focused = true
         self.actions.switchScene("leaderboard")
     end
 end

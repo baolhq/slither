@@ -6,6 +6,8 @@ local colors = {
     SNAKE = { 0.4, 0.4, 0.4 },
     SNAKE_HEAD = { 0.5, 0.5, 0.5 },
     APPLE = { 0.8, 0.8, 0.8 },
+    BTN = { 0.2, 0.2, 0.2 },
+    BTN_HIGHLIGHT = { 0.4, 0.4, 0.4 }
 }
 
 return colors

@@ -1,4 +1,5 @@
 local const = require("src/global/const")
+
 local file = {}
 
 -- Save only the five highest scores

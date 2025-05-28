@@ -1,6 +1,7 @@
 local vector = require("lib/hump/vector")
 local array = require("src/utils/array")
 local const = require("src/global/const")
+
 local rng = {}
 
 function rng.getFreePos(snakeBody)

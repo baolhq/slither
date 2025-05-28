@@ -1,3 +1,5 @@
+local colors = require "src/global/colors"
+
 local drawer = {
     screenW = love.graphics.getWidth(),
     screenH = love.graphics.getHeight()
@@ -17,13 +19,20 @@ end
 function drawer:drawButton(button, font)
     -- Hover effect
     if button.hovered then
-        love.graphics.setColor(0.4, 0.4, 0.4)
+        love.graphics.setColor(colors.BTN_HIGHLIGHT)
     else
-        love.graphics.setColor(0.2, 0.2, 0.2)
+        love.graphics.setColor(colors.BTN)
     end
 
     -- Button rectangle
     love.graphics.rectangle("fill", button.x, button.y, button.width, button.height, 4, 4)
+
+    -- Button outline on focused
+    if button.focused then
+        love.graphics.setColor(colors.BTN_HIGHLIGHT)
+        love.graphics.setLineWidth(1)
+        love.graphics.rectangle("line", button.x, button.y, button.width, button.height, 4, 4)
+    end
 
     -- Button text
     love.graphics.setColor(1, 1, 1)

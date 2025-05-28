@@ -41,11 +41,7 @@ function love.load()
 end
 
 function love.keypressed(key)
-    if key == "return" and sceneManager.current == "title" then
-        sceneManager:switch("main", assets)
-    else
-        sceneManager:keypressed(key)
-    end
+    sceneManager:keypressed(key)
 end
 
 function love.mousepressed(x, y, btn)
